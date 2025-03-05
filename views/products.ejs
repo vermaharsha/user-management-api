@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products | BlueMedix</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-left">
+        <img src="/images/logo.png" alt="BlueMedix Logo" class="logo">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/login">Client Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <h2>Our Products</h2>
+      <div id="productList"></div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 BlueMedix. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    async function fetchProducts() {
+      try {
+        const response = await fetch('/api/products');
+        const products = await response.json();
+        let html = '<ul>';
+        products.forEach(product => {
+          html += `<li>${product.name} - $${product.price}</li>`;
+        });
+        html += '</ul>';
+        document.getElementById('productList').innerHTML = html;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('productList').textContent = 'Error fetching products';
+      }
+    }
+    fetchProducts();
+  </script>
+</body>
+</html>
