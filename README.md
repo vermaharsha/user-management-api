@@ -127,4 +127,6 @@ A backend service built with Node.js, Express, and MongoDB (using Mongoose). The
 - **Enhanced Error Handling:** Improve logging and error responses.
 
 ---
+## Author 💻
+Made with love by [Harsha Verma](https://github.com/vermaharsha)
 
